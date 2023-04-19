@@ -8,4 +8,5 @@ export const store = reactive({
   filmsArray: [],
   seriesArray: [],
   currentSearch: "",
+  stars:5
 });

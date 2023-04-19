@@ -11,9 +11,9 @@ export default {
         }
     },
 
-    computed:{
+    computed: {
 
-        setvote (){
+        setvote() {
             return parseInt(this.card.vote_average / 2)
         }
 
@@ -26,13 +26,16 @@ export default {
 <template>
     <div class="card text-center ">
         <img :src="`${store.imgUrl}${card.poster_path}`" alt="">
-        <h2 v-if="!card.poster_path">IMAGE NOT AVAILABLE</h2>
+        <h2 v-if="!card.poster_path"><img src="../assets/img/notavailable.jpg" alt=""></h2>
 
-        <ul class="d-flex">
+        <ul class="card-info d-flex">
             <li>TITLE: {{ card.title }}</li>
             <li> OG TITLE:{{ card.original_title }}</li>
             <li> LANGUAGE: <span :class="`fi fi-${card.original_language}`"></span></li>
-            <li> RATING:{{ setvote }}</li>
+            <li> RATING: <span v-for="i in store.stars">
+                    <i :class="[(i <= setvote) ? 'fa-solid fa-star' : 'fa-regular fa-star']"></i>
+                </span> </li>
+            <li>OVERWIEW:{{ card.overview }}</li>
         </ul>
     </div>
 </template>
@@ -40,32 +43,39 @@ export default {
 
 <style scoped lang="scss">
 .card {
-    height: 600px;
+    height: 400px;
     width: 250px;
-    border: 5px solid black;
     background-color: black;
     color: white;
 
     img {
-        height: 350px;
+        height: 400px;
     }
 
-    ul {
+    .card-info {
         flex-direction: column;
-        text-align: center;
-        padding: 1rem;  
+        justify-content: center;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        width: 100%;
+        padding: 0;
+        opacity: 0;
+        background-color: black;
+        height: 400px;
+
+        &:hover {
+            opacity: 1;
+        }
+
     }
 
     li {
-
         list-style: none;
         display: flex;
-        font-size: 1rem;
+        font-size: 0.7rem;
         justify-content: center;
-
     }
 
-
-  
 }
 </style>
