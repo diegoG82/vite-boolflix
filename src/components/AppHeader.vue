@@ -1,7 +1,7 @@
 <script>
 import { store } from '../store.js'
 import AppSearch from './AppSearch.vue';
-import axios from "axios" ;
+import axios from "axios";
 
 export default {
     name: 'AppHeader',
@@ -34,7 +34,7 @@ export default {
         getFilms(params) {
             axios
                 .get(this.store.apiFilms, { params })
-                
+
                 .then((resp) => {
                     console.log(resp);
                     this.store.filmsArray = resp.data.results;
@@ -62,21 +62,23 @@ export default {
 </script>
 
 <template>
-    <div class="container ">
-        <div class="header-title">
-            <h1>Boolflix</h1>
+    <div class="main-container">
+        <div class="container d-flex align-items-center justify-content-between">
+            <div class="header-title">
+                <h1>Boolflix</h1>
 
-        </div>
-        <div class="header-search">
-            <AppSearch @search="handleSearch" />
+            </div>
+            <div class="header-search">
+                <AppSearch @search="handleSearch" />
+            </div>
         </div>
     </div>
 </template>
 
 <style scoped lang="scss" >
-.container {
+.main-container {
     background-color: black;
-    display: flex;
+
 
     .header-title {
         width: 50%;
@@ -88,11 +90,6 @@ export default {
 
     }
 
-    .header-search {
-        width: 50%;
-        line-height: 100px;
-        display: flex;
-        justify-content: flex-end;
-    }
+    
 }
 </style>

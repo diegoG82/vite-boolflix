@@ -1,9 +1,13 @@
 <script>
-
+import AppCard from './AppCard.vue';
 import { store } from '../store';
 
 export default {
     name: "AppMain",
+
+    components: {
+        AppCard,
+    },
 
     data() {
         return {
@@ -16,12 +20,23 @@ export default {
 </script>
 
 <template>
-    <div class="card" v-for="element in store.filmsArray" :key="element.id" >{{ element.title }}</div>
+    <div class="container">
+        <div class="row row-cols-5 lg">
 
+            <div class="col mt-2 mb-2 " v-for="element in store.filmsArray">
+
+                <AppCard :card="element" />
+            </div>
+            <!-- <div class="col" v-for="element in store.filmsArray" :key="element.id">{{ element.title }}</div> -->
+
+
+        </div>
+
+    </div>
 </template>
 
+
 <style scoped lang="scss" >
-.card{
-    border :1px solid black;
-}
+
+
 </style>
