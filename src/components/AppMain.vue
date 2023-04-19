@@ -27,8 +27,6 @@ export default {
 
                 <AppCard :card="element" />
             </div>
-            <!-- <div class="col" v-for="element in store.filmsArray" :key="element.id">{{ element.title }}</div> -->
-
 
         </div>
 
@@ -36,7 +34,4 @@ export default {
 </template>
 
 
-<style scoped lang="scss" >
-
-
-</style>
+<style scoped lang="scss" ></style>
