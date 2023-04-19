@@ -1,13 +1,27 @@
 <script>
+
+import { store } from '../store';
+
 export default {
-    name: "AppMain"
+    name: "AppMain",
+
+    data() {
+        return {
+            store
+        }
+    },
+
 }
+
 </script>
 
 <template>
-<h2>Main</h2>
+    <div class="card" v-for="element in store.filmsArray" :key="element.id" >{{ element.title }}</div>
+
 </template>
 
 <style scoped lang="scss" >
-
+.card{
+    border :1px solid black;
+}
 </style>
