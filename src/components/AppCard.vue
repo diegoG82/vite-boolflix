@@ -1,9 +1,13 @@
 <script>
 import { store } from '../store.js'
-import "/node_modules/flag-icons/css/flag-icons.min.css";
+import LangFlag from 'vue-lang-code-flags';
 export default {
     name: "AppCard",
     props: ["card"],
+
+    components: {
+        LangFlag,
+    },
 
     data() {
         return {
@@ -28,10 +32,13 @@ export default {
         <img :src="`${store.imgUrl}${card.poster_path}`" alt="">
         <h2 v-if="!card.poster_path"><img src="../assets/img/notavailable.jpg" alt=""></h2>
 
+
+
         <ul class="card-info d-flex">
-            <li>TITLE: {{ card.title }}</li>
+            <li v-if="card.title">TITLE: {{ card.title }}</li>
+            <li v-else>NAME:{{ card.name }}</li>
             <li> OG TITLE:{{ card.original_title }}</li>
-            <li> LANGUAGE: <span :class="`fi fi-${card.original_language}`"></span></li>
+            <li> LANGUAGE: <lang-flag :iso="`${card.original_language}`" /></li>
             <li> RATING: <span v-for="i in store.stars">
                     <i :class="[(i <= setvote) ? 'fa-solid fa-star' : 'fa-regular fa-star']"></i>
                 </span> </li>

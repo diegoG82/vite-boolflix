@@ -17,11 +17,31 @@ export default {
 
 </script>
 <template>
-
-    <div>
-        <input @keyup.enter="$emit('search')" v-model.trim="store.currentSearch" type="text" placeholder="Search">
+    <div class="search">
+        <input @keyup.enter="$emit('search')" v-model.trim="store.currentSearch" type="text" placeholder="Find your next Show">
+        <button @click="$emit('search')">GO!</button>
     </div>
-    
-
 </template>
-<style scoped lang="scss"></style>
+
+
+<style scoped lang="scss">
+
+.search{
+    border: 5px solid red;
+}
+
+input {
+    border: none;
+    background: none;
+    color: white;
+
+    // &:focus-visible{
+
+    // }
+}   
+
+button{
+    background-color: red;
+    border: none;
+}
+</style>
