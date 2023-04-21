@@ -20,12 +20,11 @@ export default {
 </script>
 
 <template>
-    
     <div class="container">
         <h2>MOVIES</h2>
-        <div class="row row-cols-5 lg">
+        <div class="column row-cols-5 lg">
 
-            <div class="col mt-2 mb-2 " v-for="element in store.filmsArray">
+            <div class="col " v-for="element in store.filmsArray">
 
                 <AppCard :card="element" />
             </div>
@@ -35,11 +34,11 @@ export default {
     </div>
 
 
-    <div class="container">
+    <div class="container"> 
         <h2>SERIES</h2>
-        <div class="row row-cols-5 lg">
+        <div class="column row-cols-5 lg">
 
-            <div class="col mt-2 mb-2 " v-for="element in store.seriesArray">
+            <div class="col  " v-for="element in store.seriesArray">
 
                 <AppCard :card="element" />
             </div>
@@ -51,5 +50,20 @@ export default {
 
 
 <style scoped lang="scss" >
+h2 {
+    color: red;
+}
 
+
+.column {
+
+    height: 400px;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    .col {
+        height: 400px;
+    }
+}
 </style>

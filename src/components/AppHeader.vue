@@ -83,6 +83,7 @@ export default {
     .header-title {
         width: 50%;
 
+
         h1 {
             color: red;
             line-height: 100px;

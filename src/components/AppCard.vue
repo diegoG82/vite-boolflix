@@ -18,7 +18,7 @@ export default {
     computed: {
 
         setvote() {
-            return parseInt(this.card.vote_average / 2)
+            return Math.ceil(this.card.vote_average / 2)
         }
 
     },
@@ -35,9 +35,11 @@ export default {
 
 
         <ul class="card-info d-flex">
+            <!-- Condizionale con v-if e v-else per il titolo della serie -->
             <li v-if="card.title">TITLE: {{ card.title }}</li>
             <li v-else>NAME:{{ card.name }}</li>
-            <li> OG TITLE:{{ card.original_title }}</li>
+            <!-- Condizionale su una riga per il titolo og della serie -->
+            <li> OG TITLE:{{ card.original_title ? card.original_title : card.original_name }}</li>
             <li> LANGUAGE: <lang-flag :iso="`${card.original_language}`" /></li>
             <li> RATING: <span v-for="i in store.stars">
                     <i :class="[(i <= setvote) ? 'fa-solid fa-star' : 'fa-regular fa-star']"></i>
@@ -51,14 +53,11 @@ export default {
 <style scoped lang="scss">
 .card {
     height: 400px;
-    width: 250px;
     background-color: black;
     color: white;
+    padding:5px;
 
-    img {
-        height: 400px;
-    }
-
+    
     .card-info {
         flex-direction: column;
         justify-content: center;
@@ -70,8 +69,9 @@ export default {
         opacity: 0;
         background-color: black;
         height: 400px;
+        overflow-y: auto;
 
-        &:hover {
+        &:hover {   
             opacity: 1;
         }
 
