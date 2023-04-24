@@ -19,32 +19,45 @@ export default {
 
 </script>
 
+
+
 <template>
-    <div class="container">
-        <h2>MOVIES</h2>
-        <div class="column row-cols-5 lg">
+    <div v-if="store.filmsArray.length === 0 & store.seriesArray.length === 0" class="container main"><h1>TROVA IL TUO PROSSIMO SHOWH</h1></div>
 
-            <div class="col " v-for="element in store.filmsArray">
 
-                <AppCard :card="element" />
+
+    <div v-else class="container">
+
+
+
+
+
+        <div class="container">
+            <h2>MOVIES</h2>
+            <div class="column row-cols-5 lg">
+
+                <div class="col " v-for="element in store.filmsArray">
+
+                    <AppCard :card="element" />
+                </div>
+
             </div>
 
         </div>
 
-    </div>
 
+        <div class="container">
+            <h2>SERIES</h2>
+            <div class="column row-cols-5 lg">
 
-    <div class="container"> 
-        <h2>SERIES</h2>
-        <div class="column row-cols-5 lg">
+                <div class="col  " v-for="element in store.seriesArray">
 
-            <div class="col  " v-for="element in store.seriesArray">
+                    <AppCard :card="element" />
+                </div>
 
-                <AppCard :card="element" />
             </div>
 
         </div>
-
     </div>
 </template>
 
