@@ -22,7 +22,7 @@ export default {
 
 
 <template>
-    <div v-if="store.filmsArray.length === 0 & store.seriesArray.length === 0" class="container main"><h1>TROVA IL TUO PROSSIMO SHOWH</h1></div>
+    <div v-if="store.filmsArray.length === 0 & store.seriesArray.length === 0" class="container main"><h1>TROVA IL TUO PROSSIMO SHOW</h1></div>
 
 
 
